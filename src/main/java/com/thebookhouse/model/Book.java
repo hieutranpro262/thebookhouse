@@ -1,29 +1,37 @@
 package com.thebookhouse.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="BOOK")
 public class Book {
 
-    /** Book ID */
+    @Id
+    @Column(name="ID")
     private int id;
 
-    /** Book name */
+    @Column(name="NAME")
     private String name;
 
-    /** Book type ID */
+    @Column(name="TYPE_ID")
     private int typeId;
 
-    /** Author ID */
+    @Column(name="AUTHOR_ID")
     private int authorId;
 
-    /** Publication company */
+    @Column(name="COMPANY_ID")
     private int companyId;
 
-    /** Book price */
+    @Column(name="PRICE")
     private float price;
 
-    /** Current rate */
+    @Column(name="RATE")
     private float rate;
 
-    /** Preview content ID */
+    @Column(name="PREVIEW_ID")
     private int previewId;
 
     public Book() {
