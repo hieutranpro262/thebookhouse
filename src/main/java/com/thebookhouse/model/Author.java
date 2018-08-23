@@ -1,10 +1,13 @@
 package com.thebookhouse.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -12,7 +15,7 @@ import javax.persistence.Table;
 public class Author {
 
     @Id
-    @Column(name="")
+    @Column(name="ID")
     private int id;
 
     @Column(name="FIRST_NAME")
@@ -32,6 +35,9 @@ public class Author {
 
     @Column(name="DESCRIPTION")
     private String description;
+
+    @OneToMany(mappedBy="author", fetch=FetchType.LAZY)
+    private List<Book> books;
 
     public int getId() {
         return id;
@@ -87,6 +93,14 @@ public class Author {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
     }
 
     private enum Gender {

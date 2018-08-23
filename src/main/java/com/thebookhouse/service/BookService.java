@@ -3,10 +3,12 @@ package com.thebookhouse.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.thebookhouse.model.Book;
 import com.thebookhouse.repository.BookRepository;
 
+@Service
 public class BookService {
 
     @Autowired
@@ -18,6 +20,20 @@ public class BookService {
 
     public Book findOne(int id) {
         return bookRepository.getOne(id);
+    }
+
+    public Book add(Book book) {
+        book.setId(0);
+        return bookRepository.save(book);
+    }
+
+    public Book update(Book book) {
+        return bookRepository.save(book);
+    }
+
+    public Book delete(Book book) {
+        bookRepository.delete(book);
+        return book;
     }
 
 }
