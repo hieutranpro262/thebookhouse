@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="AUTHOR")
 public class Author {
@@ -37,6 +39,7 @@ public class Author {
     private String description;
 
     @OneToMany(mappedBy="author", fetch=FetchType.LAZY)
+    @JsonIgnore
     private List<Book> books;
 
     public int getId() {

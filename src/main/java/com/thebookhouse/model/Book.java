@@ -14,6 +14,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -33,16 +34,19 @@ public class Book {
     @NotNull(message="This field is required")
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="TYPE_ID", foreignKey = @ForeignKey(name = "FK_BOOK_TYPE"))
+    @JsonIgnore
     private BookType type;
 
     @NotNull(message="This field is required")
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="AUTHOR_ID", foreignKey = @ForeignKey(name = "FK_AUTHOR"))
+    @JsonIgnore
     private Author author;
 
     @NotNull(message="This field is required")
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="COMPANY_ID", foreignKey = @ForeignKey(name = "FK_COMPANY"))
+    @JsonIgnore
     private Company company;
 
     @Min(value=0, message="Price must be in range 0-9999.99$")
