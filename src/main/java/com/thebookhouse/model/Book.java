@@ -2,19 +2,14 @@ package com.thebookhouse.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -26,42 +21,32 @@ public class Book {
     @Column(name="ID")
     private int id;
 
-    @Size(min = 1, max = 500, message = "Name must be in range 1-500 characters")
-    @NotBlank(message="This field is required")
     @Column(name="NAME")
+    @NotBlank
     private String name;
 
-    @NotNull(message="This field is required")
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name="TYPE_ID", foreignKey = @ForeignKey(name = "FK_BOOK_TYPE"))
-    @JsonIgnore
+    @NotNull
     private BookType type;
 
-    @NotNull(message="This field is required")
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name="AUTHOR_ID", foreignKey = @ForeignKey(name = "FK_AUTHOR"))
-    @JsonIgnore
     private Author author;
 
-    @NotNull(message="This field is required")
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name="COMPANY_ID", foreignKey = @ForeignKey(name = "FK_COMPANY"))
-    @JsonIgnore
     private Company company;
 
-    @Min(value=0, message="Price must be in range 0-9999.99$")
-    @Max(value=10000, message="Price must be in range 0-9999.99$")
-    @NotBlank(message="This field is required")
     @Column(name="PRICE")
-    private float price;
+    @NotNull
+    private Float price;
 
-    @Min(value=0, message="Rate must be in range 0-5")
-    @Max(value=5, message="Rate must be in range 0-5")
     @Column(name="RATE")
-    private float rate;
+    private Float rate;
 
     @Column(name="PREVIEW_ID")
-    private int previewId;
+    private Integer previewId;
 
     public int getId() {
         return id;
@@ -103,19 +88,19 @@ public class Book {
         this.company = company;
     }
 
-    public float getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 
-    public float getRate() {
+    public Float getRate() {
         return rate;
     }
 
-    public void setRate(float rate) {
+    public void setRate(Float rate) {
         this.rate = rate;
     }
 

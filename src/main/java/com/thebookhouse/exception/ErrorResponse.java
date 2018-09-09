@@ -1,10 +1,11 @@
 package com.thebookhouse.exception;
 
-public class BookErrorResponse {
+public class ErrorResponse {
 
+    private long timeStamp;
     private int status;
     private String message;
-    private long timeStamp;
+    private String path;
 
     public int getStatus() {
         return status;
@@ -23,6 +24,12 @@ public class BookErrorResponse {
     }
     public void setTimeStamp(long timeStamp) {
         this.timeStamp = timeStamp;
+    }
+    public String getPath() {
+        return path;
+    }
+    public void setPath(String path) {
+        this.path = path;
     }
 
 }

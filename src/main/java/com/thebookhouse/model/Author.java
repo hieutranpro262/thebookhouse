@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -38,7 +37,7 @@ public class Author {
     @Column(name="DESCRIPTION")
     private String description;
 
-    @OneToMany(mappedBy="author", fetch=FetchType.LAZY)
+    @OneToMany(mappedBy="author")
     @JsonIgnore
     private List<Book> books;
 

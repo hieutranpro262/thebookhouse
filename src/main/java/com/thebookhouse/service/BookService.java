@@ -19,7 +19,7 @@ public class BookService {
     }
 
     public Book findOne(int id) {
-        return bookRepository.getOne(id);
+        return bookRepository.findById(id).orElse(null);
     }
 
     public Book add(Book book) {
