@@ -10,6 +10,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.thebookhouse.util.enums.Gender;
 
 @Entity
 @Table(name="AUTHOR")
@@ -103,19 +104,6 @@ public class Author {
 
     public void setBooks(List<Book> books) {
         this.books = books;
-    }
-
-    private enum Gender {
-        FEMALE(0),
-        MALE(1),
-        OTHER(2);
-
-        @SuppressWarnings("unused")
-        private int gender;
-
-        Gender(int gender) {
-            this.gender = gender;
-        }
     }
 
 }
